@@ -219,7 +219,7 @@
   <footer class="main-footer">
     <strong>Copyright &copy; 2021 &nbsp;&nbsp;&nbsp;<a href="#">Mirko Miličić - završni rad ->  Implementacija programske podrške za praćenje aktivnosti parking senzora na pametnom parkingu</a></strong>
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.1.0
+      <b>Version</b> 3.1.1
     </div>
   </footer>
 </div>
