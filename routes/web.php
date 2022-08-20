@@ -8,6 +8,7 @@ use App\Http\Controllers\ParkingsController;
 use App\Http\Controllers\DashboardControlller;
 use App\Http\Controllers\StatisticsController;
 use App\Http\Controllers\UsersCOntroller;
+use App\Http\Controllers\AppController;
 
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\SuperAdminMiddleware;
@@ -71,3 +72,5 @@ Route::get('logout', function ()
 
     return Redirect::to('/');
 })->name('logout');
+
+Route::get('/health', [AppController::class, 'health']);

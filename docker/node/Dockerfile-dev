@@ -1,0 +1,15 @@
+# Build dev docker image for client.js
+FROM node:16.16-slim
+
+RUN npm install -g nodemon
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . ./
+
+EXPOSE 3000 9229
+
+ENTRYPOINT ["nodemon", "--inspect=0.0.0.0:9229", "client.js"]

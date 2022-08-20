@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: node-env-configmap
+  labels:
+    app: node-app
+data:
+  DB_HOST: "mysql-service.default"
+  DB_PORT: "3306"

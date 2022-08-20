@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-deployment
+  labels:
+    app: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:7.0
+          volumeMounts:
+            - mountPath: /usr/local/etc/redis/redis.conf
+              name: redis-conf
+              subPath: redis.conf
+              readOnly: true
+            - mountPath: /usr/local/etc/redis/secret.conf
+              name: secret-conf
+              subPath: secret.conf
+              readOnly: true
+            - mountPath: /data
+              name: redis-data
+          command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "100m"
+            limits:
+              memory: "200Mi"
+              cpu: "200m"
+      volumes:
+        - name: redis-conf
+          configMap:
+            name: redis-configmap
+        - name: secret-conf
+          secret:
+            secretName: redis-secret
+        - name: redis-data
+          emptyDir: {}

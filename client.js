@@ -1,14 +1,17 @@
+require('dotenv').config()
+
 var io = require('socket.io-client');
 var socket = io.connect('https://demo.smart.sum.ba/parking-events', {reconnect: true});
-var mysql = require('mysql');
+var mysql = require('mysql2');
 var counter = 0;
 var counter2 = 0;
 
 var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "zavrsni_db"
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
   });
 
 con.connect(function(err) {

@@ -320,9 +320,14 @@ class StatisticsController extends Controller
                             ->where('id_parking_lot', '3')
                             ->count('id');
 
-        $parking1percentage7days = round(($parking1weekStats/($parking1weekStats + $parking2weekStats + $parking3weekStats)*100), 2);
-        $parking1percentage30days = round(($parking1thisMonthStats/($parking1thisMonthStats + $parking2thisMonthStats + $parking3thisMonthStats)*100), 2);
-        $parking1percentageUkupno = round((($parking1UkupnoStats/$parkinziUkupnoStats)*100), 2);
+        $parking1percentage7daysDiv = $parking1weekStats + $parking2weekStats + $parking3weekStats;
+        $parking1percentage7days = $parking1percentage7daysDiv > 0 ? round(($parking1weekStats / $parking1percentage7daysDiv) * 100, 2) : 0;
+
+        $parking1percentage30daysDiv = $parking1thisMonthStats + $parking2thisMonthStats + $parking3thisMonthStats;
+        $parking1percentage30days = $parking1percentage30daysDiv > 0 ? round(($parking1thisMonthStats / $parking1percentage30daysDiv) * 100, 2) : 0;
+
+        $parking1percentageUkupnoDiv = $parkinziUkupnoStats;
+        $parking1percentageUkupno = $parking1percentageUkupnoDiv > 0 ? round(($parking1UkupnoStats / $parking1percentageUkupnoDiv) * 100, 2) : 0;
 
         //PARKING 1 tjedna statistika CHART
         $chart_options = [
@@ -463,9 +468,14 @@ class StatisticsController extends Controller
                             ->count();
         $parkinziUkupnoStats = Event::count();
 
-        $parking2percentage7days = round(($parking2weekStats/($parking1weekStats + $parking2weekStats + $parking3weekStats)*100), 2);
-        $parking2percentage30days = round(($parking2thisMonthStats/($parking1thisMonthStats + $parking2thisMonthStats + $parking3thisMonthStats)*100), 2);
-        $parking2percentageUkupno = round((($parking2UkupnoStats/$parkinziUkupnoStats)*100), 2);
+        $parking2percentage7daysDiv = $parking1weekStats + $parking2weekStats + $parking3weekStats;
+        $parking2percentage7days = $parking2percentage7daysDiv > 0 ? round(($parking2weekStats / $parking2percentage7daysDiv) * 100, 2) : 0;
+
+        $parking2percentage30daysDiv = $parking1thisMonthStats + $parking2thisMonthStats + $parking3thisMonthStats;
+        $parking2percentage30days = $parking2percentage30daysDiv > 0 ? round(($parking2thisMonthStats / $parking2percentage30daysDiv) * 100, 2) : 0;
+
+        $parking2percentageUkupnoDiv = $parkinziUkupnoStats;
+        $parking2percentageUkupno = $parking2percentageUkupnoDiv > 0 ? round(($parking2UkupnoStats / $parking2percentageUkupnoDiv) * 100, 2) : 0;
 
         //PARKING 2 tjedna statistika CHART
         $chart_options = [
@@ -618,9 +628,14 @@ class StatisticsController extends Controller
         ->where('id_parking_lot', '3')
         ->count('id');
 
-        $parking3percentage7days = round(($parking1weekStats/($parking1weekStats + $parking2weekStats + $parking3weekStats)*100), 2);
-        $parking3percentage30days = round(($parking1thisMonthStats/($parking1thisMonthStats + $parking2thisMonthStats + $parking3thisMonthStats)*100), 2);
-        $parking3percentageUkupno = round((($parking3UkupnoStats/$parkinziUkupnoStats)*100), 2);
+        $parking3percentage7daysDiv = $parking1weekStats + $parking2weekStats + $parking3weekStats;
+        $parking3percentage7days = $parking3percentage7daysDiv > 0 ? round(($parking3weekStats / $parking3percentage7daysDiv) * 100, 2) : 0;
+
+        $parking3percentage30daysDiv = $parking1thisMonthStats + $parking2thisMonthStats + $parking3thisMonthStats;
+        $parking3percentage30days = $parking3percentage30daysDiv > 0 ? round(($parking3thisMonthStats / $parking3percentage30daysDiv) * 100, 2) : 0;
+
+        $parking3percentageUkupnoDiv = $parkinziUkupnoStats;
+        $parking3percentageUkupno = $parking3percentageUkupnoDiv > 0 ? round(($parking3UkupnoStats / $parking3percentageUkupnoDiv) * 100, 2) : 0;
 
         //PARKING 3 tjedna statistika CHART
         $chart_options = [
