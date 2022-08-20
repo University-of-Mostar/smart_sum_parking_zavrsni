@@ -16,7 +16,7 @@ spec:
     spec:
       initContainers:
         - name: init-laravel-app
-          image: tkordicfpmoz/smart_sum_parking:latest
+          image: gcr.io/PROJECT_ID/IMAGE:TAG
           envFrom:
             - configMapRef:
                 name: laravel-app-env-configmap
@@ -41,7 +41,7 @@ spec:
 
       containers:
         - name: laravel-app
-          image: tkordicfpmoz/smart_sum_parking:latest
+          image: gcr.io/PROJECT_ID/IMAGE:TAG
           envFrom:
             - configMapRef:
                 name: laravel-app-env-configmap

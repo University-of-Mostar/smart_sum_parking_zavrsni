@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: node-app
-          image: tkordicfpmoz/smart_sum_parking_clientjs:latest
+          image: gcr.io/PROJECT_ID/IMAGE:TAG
           envFrom:
             - configMapRef:
                 name: node-env-configmap
